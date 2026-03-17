@@ -113,3 +113,20 @@ html {
     background-color: #000000;
     border-radius: 4px;
 }
+
+.card-img-custom {
+    height: 270px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #000000;
+    border-color: #000000;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #3d3d3d;
+    border-color: #000000;
+}
