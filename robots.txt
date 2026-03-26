@@ -1,0 +1,9 @@
+# Regras para todos os buscadores
+User-agent: *
+Allow: /
+
+# Bloquear pastas que não precisam ser indexadas (exemplo se tivesse painel adm)
+# Disallow: /admin/
+
+# Indica o caminho do seu mapa do site para o Google
+Sitemap: https://patrycke.github.io/AJC-Solucoes-Estruturais/sitemap.xml

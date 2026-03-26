@@ -1,7 +1,25 @@
-body {
-    padding-top: 55px; 
+/* ==========================================================================
+   1. CONFIGURAÇÕES GERAIS E RESET
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px; /* Evita que o título da seção fique atrás do menu */
 }
 
+body {
+    padding-top: 55px; /* Compensa a altura da navbar fixa */
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fcfcfc;
+    color: #212529;
+}
+
+/* Utilitários */
+.text-grey { color: #585858; }
+.text-white { color: #ffffff !important; }
+
+/* ==========================================================================
+   2. NAVEGAÇÃO (NAVBAR)
+   ========================================================================== */
 .navbar-dark .navbar-nav .nav-link.active {
     color: #ffffff !important; 
     border-bottom: 2px solid #ffffff;
@@ -9,12 +27,18 @@ body {
 
 .nav-link {
     font-weight: 400 !important;
+    transition: color 0.3s ease;
 }
 
-.selector-for-some-widget {
-  box-sizing: content-box;
+/* ==========================================================================
+   3. CARROSSEL (HOME)
+   ========================================================================== */
+#carrossel .carousel-item img {
+    height: 60vh;
+    object-fit: cover;
 }
 
+/* Gradiente sobre as imagens para leitura do texto */
 .carousel-item::after {
     content: "";
     position: absolute;
@@ -22,29 +46,64 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 50%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
     pointer-events: none;
-}
-
-.carousel-item img {
-    object-fit: cover;
 }
 
 .carousel-caption {
     z-index: 2;
-    padding-bottom: 1rem;
+    bottom: 5%; /* Altera de 20% (que estava no seu código anterior) para 5% ou 10px */
+    padding-bottom: 0; /* Remove paddings extras que podem empurrar o texto para cima */
 }
 
-.text-grey {
-    color: #585858;
+.carousel-caption h5 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; /* Deixa bem grossa, estilo viga de aço */
+    text-transform: uppercase;
+    letter-spacing: -1px; /* Letras mais juntas dão aspecto de força */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Sombra para ler sobre as faíscas */
+    margin-bottom: 5px;
 }
 
+.carousel-caption p {
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    opacity: 0.9;
+}
+
+.carousel-indicators {
+    bottom: 0; /* Cola os tracinhos no limite inferior da imagem */
+}
+
+/* ==========================================================================
+   4. SEÇÃO SOBRE (TABS E CONTEÚDO)
+   ========================================================================== */
+.sobre-card {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.img-sobre {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+}
+
+/* Abas Customizadas */
 .nav-pills .nav-link {
     color: #212529;
     font-weight: 500;
     border: 1px solid #dee2e6;
-    margin-right: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
     background-color: #f8f9fa;
+    transition: all 0.2s ease;
 }
 
 .nav-pills .nav-link.active {
@@ -53,109 +112,70 @@ body {
     border-color: #000000;
 }
 
-.img-fluid {
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
-}
-
-.img-sobre {
-    width: 100%;
-    min-height: 500px;
-    object-fit: cover;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 70px; 
-}
-
 #pills-tabContent {
-    min-height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.col-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 100px;
-    height: 100%;
-}
-
-.img-fixa {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
-}
-
-.sobre-card {
-    background: #ffffff;
-    border: 1px solid #dee2e6;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    min-height: 350px;
 }
 
 .scroll-container {
-    height: 800px; 
+    max-height: 600px; 
     overflow-y: auto;
-    padding-right: 15px;
+    padding-right: 10px;
 }
 
-.scroll-container::-webkit-scrollbar {
-    width: 8px;
-}
+/* Scrollbar Interna */
+.scroll-container::-webkit-scrollbar { width: 6px; }
 .scroll-container::-webkit-scrollbar-thumb {
-    background-color: #000000;
-    border-radius: 4px;
+    background-color: #ccc;
+    border-radius: 10px;
 }
 
+/* ==========================================================================
+   5. SERVIÇOS (CARDS)
+   ========================================================================== */
 .card-img-custom {
-    height: 270px;
+    height: 250px;
     object-fit: cover;
     width: 100%;
 }
 
-.btn-primary {
-    background-color: #000000;
-    border-color: #000000;
-    font-weight: bold;
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.btn-primary:hover {
-    background-color: #3d3d3d;
-    border-color: #000000;
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
 }
 
-/* Limita a largura do formulário para não ficar esticado demais em telas grandes */
+/* ==========================================================================
+   6. CONTATO E FORMULÁRIO
+   ========================================================================== */
 .max-width-custom {
-    max-width: 1300px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-/* Estilo personalizado para os campos de entrada */
+#contato .card {
+    backdrop-filter: blur(10px); /* Dá um efeito de desfoque no fundo */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
 #contato .form-control {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white !important;
 }
 
 #contato .form-control:focus {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
     border-color: #ffffff;
-    outline: none;
-    box-shadow: 0 0 0 0.25 
+    box-shadow: none;
 }
 
-/* Estilo para os Placeholders (o texto de exemplo) */
 #contato .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.6) !important; /* Branco com transparência para não confundir com o texto digitado */
-    opacity: 1; /* Necessário para o Firefox */
+    color: rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Botão Laranja AJC */
 .btn-white {
     background-color: #ffffff;
     color: #000;
@@ -164,19 +184,97 @@ html {
 }
 
 .btn-white:hover {
-    background-color: #198b15;
+    background-color: #f39c12;
     color: #fff;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4);
 }
 
-.text-white {
-    color: #ffffff;
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px #212529 inset !important; /* Cor do fundo do card */
+    transition: background-color 5000s ease-in-out 0s;
 }
 
-footer h5 {
-    letter-spacing: 1px;
+/* ==========================================================================
+   7. BOTÃO FLUTUANTE (WHATSAPP)
+   ========================================================================== */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #FFF !important;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+    z-index: 2000; /* Acima de tudo */
+    animation: pulse-green 2s infinite;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-footer .text-secondary {
-    font-size: 0.85rem;
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: scale(1.1);
+}
+
+@keyframes pulse-green {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ==========================================================================
+   8. ANIMAÇÕES (REVEAL ON SCROLL)
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+    visibility: hidden;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* ==========================================================================
+   9. MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================================================== */
+
+/* Desktop / Tablets */
+@media (min-width: 768px) {
+    #carrossel .carousel-item img {
+        height: 85vh;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .navbar-brand { font-size: 0.9rem; }
+    #pills-tab { justify-content: center; }
+    .carousel-caption { bottom: 10%; }
+    .carousel-caption h5 {font-size: 1.8rem !important; line-height: 1.1;}
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    /* Opcional: Remover o scroll fixo em telas pequenas para melhor UX de anúncios */
+    .scroll-container {
+        max-height: none;
+        overflow-y: visible;
+    }
 }
